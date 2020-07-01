@@ -1,0 +1,5 @@
+name: 'custom_contact'
+type: module
+description: 'english version contact api'
+core: 8.x
+package: 'Custom'

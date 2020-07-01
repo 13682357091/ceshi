@@ -1,0 +1,64 @@
+/**
+ * @file
+ * Styles for Admintheme  messages.
+ */
+/*================== Message box========*/
+
+.messages--warning
+{
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+    position: relative;
+    padding: 15px 20px 15px 35px;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 15px;
+    box-shadow: -8px 0 0 #ffeeba;
+
+}
+.messages--status
+{
+
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    position: relative;
+    padding: 15px 20px 15px 35px;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 15px;
+    box-shadow: -8px 0 0 #d4edda;
+
+}
+.messages.simpnews-messages.messages--error
+{
+
+    color: #721c24 !important;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    position: relative;
+    padding: 15px 20px 15px 35px;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 15px;
+    box-shadow: -8px 0 0 #f8d7da;
+    /*background-image: url(../../../../../themes/admintheme/css/images/error.svg);*/
+}
+.messages.simpnews-messages.messages--error:before
+{
+        font: normal normal normal 14px/1 FontAwesome;
+    /* margin-right: 10px; */
+    content: "\f00d";
+}
+.messages--warning:before
+{
+    content: "\f071";
+    font: normal normal normal 14px/1 FontAwesome;
+}
+
+.messages--status:before
+{
+        content: "\f00c";
+        font: normal normal normal 14px/1 FontAwesome;
+}

@@ -1,0 +1,14 @@
+{
+  "name": "drupal/custom_contact",
+  "type": "drupal-module",
+  "description": "english version contact api",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/custom_contact",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/custom_contact",
+    "source": "http://cgit.drupalcode.org/custom_contact"
+  },
+  "require": { }
+}

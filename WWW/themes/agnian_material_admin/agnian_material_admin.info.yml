@@ -1,0 +1,30 @@
+name: Agnian Material Admin
+type: theme
+base theme: seven
+description: 'Agnian material admin theme for Drupal.'
+package: Agnian
+author: Agnian LTD
+# core: 8.x # '8.0.0-beta16'
+libraries:
+  - agnian_material_admin/material_styling
+  - agnian_material_admin/switch_style
+  - agnian_material_admin/owl_carousel
+regions:
+  header: 'Header'
+  pre_content: 'Pre-content'
+  breadcrumb: 'Breadcrumb'
+  highlighted: 'Highlighted'
+  help: 'Help'
+  content: 'Content'
+  page_top: 'Page top'
+  page_bottom: 'Page bottom'
+  sidebar_first: 'First sidebar'
+  none: 'none'
+regions_hidden:
+  - sidebar_first
+
+# Information added by Drupal.org packaging script on 2018-10-20
+version: '8.x-1.28'
+core: '8.x'
+project: 'agnian_material_admin'
+datestamp: 1540056184

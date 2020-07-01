@@ -1,0 +1,13 @@
+name: 'Bulk Form Extended'
+type: module
+author: Anthony Cooper
+description: 'Extends the options available for the Bulk Forms'
+dependencies:
+  - 'drupal:views'
+# core: 8.x
+
+# Information added by Drupal.org packaging script on 2018-09-25
+version: '8.x-1.0-alpha2'
+core: '8.x'
+project: 'bulk_form_extended'
+datestamp: 1537885098

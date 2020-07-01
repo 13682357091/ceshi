@@ -1,0 +1,14 @@
+{
+  "name": "drupal/custom_video",
+  "type": "drupal-module",
+  "description": "video center",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/custom_video",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/custom_video",
+    "source": "http://cgit.drupalcode.org/custom_video"
+  },
+  "require": { }
+}

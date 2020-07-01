@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Contains custom_instruments.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function custom_instruments_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the custom_instruments module.
+    case 'help.page.custom_instruments':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('使用说明') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function custom_instruments_theme() {
+  return [
+    'custom_instruments' => [
+      'render element' => 'children',
+    ],
+  ];
+}

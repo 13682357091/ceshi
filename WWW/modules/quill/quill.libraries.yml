@@ -1,0 +1,29 @@
+quill.bubble:
+  css:
+    theme:
+      vendor/quill/quill.bubble.css: { minified: false }
+  version: 1.0.4
+
+quill.js:
+  js:
+    vendor/quill/quill.min.js: { minified: true }
+  version: 1.0.4
+
+quill.snow:
+  css:
+    theme:
+      vendor/quill/quill.snow.css: { minified: false }
+  version: 1.0.4
+
+drupal.quill:
+  css:
+    theme:
+      css/quill.css: {}
+  dependencies:
+    - core/drupalSettings
+    - editor/drupal.editor
+    - quill/quill.js
+    - quill/quill.bubble
+    - quill/quill.snow
+  js:
+    js/quill.js: {}

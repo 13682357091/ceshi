@@ -1,0 +1,14 @@
+name: Menu SVG Icons
+type: module
+description: Allows to add svg sprite icons to menus.
+package: Administration
+# core: 8.x
+configure: entity.menu_svg_icons_icon_set.collection
+dependencies:
+  - drupal:menu_ui
+
+# Information added by Drupal.org packaging script on 2018-10-26
+version: '8.x-1.0'
+core: '8.x'
+project: 'menu_svg_icons'
+datestamp: 1540558719

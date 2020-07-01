@@ -1,0 +1,35 @@
+global-styling:
+  version: VERSION
+  css:
+    theme:
+      css/assets/plugins/bootstrap/css/bootstrap.min.css: {}
+      css/assets/plugins/chartist-js/dist/chartist.min.css: {}
+      css/assets/plugins/chartist-js/dist/chartist-init.css: {}
+      css/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css: {}
+      css/assets/plugins/c3-master/c3.min.css: {}
+      css/assets/style.css: {}
+      css/assets/colors/blue.css: {}
+      css/assets/plugins/select2/select2.min.css: {}
+      css/admin-style.scss: {}
+    component:
+      css/component/messages.css: {}
+      css/component/vertical-tabs.css: {}
+      css/component/autocomplete-loading.module.css: {}
+  js:
+    css/assets/plugins/bootstrap/js/tether.min.js: {}
+    css/assets/plugins/bootstrap/js/bootstrap.min.js: {}
+    css/assets/js/jquery.slimscroll.js: {}
+    css/assets/js/waves.js: {}
+    css/assets/js/sidebarmenu.js: {}
+    css/assets/plugins/sticky-kit-master/dist/sticky-kit.min.js: {}
+    css/assets/js/custom.min.js: {}
+    css/assets/plugins/chartist-js/dist/chartist.min.js: {}
+    css/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js: {}
+    css/assets/plugins/d3/d3.min.js: {}
+    css/assets/plugins/c3-master/c3.min.js: {}
+    css/assets/js/dashboard1.js: {}
+    js/select2.min.js: {}
+    js/admin.js: {}
+  dependencies:
+   - core/jquery
+   - core/jquery.once

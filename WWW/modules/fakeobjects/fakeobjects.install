@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Check requirements for the FakeObjects module.
+ */
+
+/**
+ * Implements hook_requirements().
+ */
+function fakeobjects_requirements($phase) {
+  $requirements = [];
+
+  if ($phase == 'install' || $phase == 'runtime') {
+
+      $requirements['fakeobjects'] = [
+        'title' => t('FakeObjects'),
+        'value' => t('Plugin detected'),
+        'severity' => REQUIREMENT_OK,
+      ];
+   }
+
+  return $requirements;
+}

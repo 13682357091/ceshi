@@ -1,0 +1,28 @@
+# Chinese, Simplified translation of Bulk Form Extended (8.x-1.0-alpha2)
+# Copyright (c) 2018 by the Chinese, Simplified translation team
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Bulk Form Extended (8.x-1.0-alpha2)\n"
+"POT-Creation-Date: 2018-12-25 12:08+0000\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Language-Team: Chinese, Simplified\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+msgid "Action"
+msgstr "动作"
+msgid "No items selected."
+msgstr "无选中项。"
+msgid "Select All"
+msgstr "选择所有"
+msgid "Available actions"
+msgstr "可用的动作"
+msgid "Allows users to apply an action to one or more items."
+msgstr "允许用户把动作应用到一个或多个项目中。"
+msgid "Update this item"
+msgstr "更新此项"
+msgid "Action title"
+msgstr "动作标题"

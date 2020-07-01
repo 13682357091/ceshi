@@ -1,0 +1,11 @@
+name: China Address
+type: module
+description: Provides a china address element
+# core: 8.x
+
+
+# Information added by Drupal.org packaging script on 2016-06-21
+version: '8.x-1.2'
+core: '8.x'
+project: 'china_address'
+datestamp: 1466486948

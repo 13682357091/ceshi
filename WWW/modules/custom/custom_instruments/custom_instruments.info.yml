@@ -1,0 +1,5 @@
+name: 'custom_instruments'
+type: module
+description: '使用说明'
+core: 8.x
+package: 'Custom'

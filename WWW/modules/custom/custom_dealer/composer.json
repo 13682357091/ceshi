@@ -1,0 +1,14 @@
+{
+  "name": "drupal/custom_dealer",
+  "type": "drupal-module",
+  "description": "My Awesome Module",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/custom_dealer",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/custom_dealer",
+    "source": "http://cgit.drupalcode.org/custom_dealer"
+  },
+  "require": { }
+}

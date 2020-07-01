@@ -1,0 +1,194 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming in the admintheme theme.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Template\Attribute;
+use Drupal\block\Entity\Block;
+use \Drupal\block_content\Entity\BlockContent;
+use Drupal\Core\Menu;
+use \Drupal\Core\Menu\MenuTreeParameters;
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * [highsta_preprocess_page description]
+ * @param  [type] &$variables [description]
+ * @return [type]             [description]
+ */
+
+function admintheme_preprocess_page(&$variables) {
+  global $base_url;
+
+  $site_config = \Drupal::config('system.site');
+  $variables['site_name'] = $site_config->get('name');
+  $variables['site_slogan'] = $site_config->get('slogan');
+
+  // logo needs to be placed within specified folder
+
+  $variables['logopath'] = file_url_transform_relative(file_create_url(theme_get_setting('logo.url')));
+
+  $theme = \Drupal::theme()->getActiveTheme()->getName();
+  $variables['theme_path'] = drupal_get_path('theme', $theme);
+  $variables['base_path'] = base_path();
+  $variables['base_url'] = $base_url;
+
+
+
+  $menu_tree = \Drupal::service('toolbar.menu_tree');
+  $parameters = new MenuTreeParameters();
+  //$parameters->setRoot('system.admin')->excludeRoot()->setMaxDepth(4)->onlyEnabledLinks();
+  $parameters->setRoot('system.admin')->excludeRoot()->setMaxDepth(2)->onlyEnabledLinks();
+  $tree = $menu_tree->load(NULL, $parameters);
+  $manipulators = array(
+    array('callable' => 'menu.default_tree_manipulators:checkAccess'),
+    array('callable' => 'menu.default_tree_manipulators:generateIndexAndSort'),
+    array('callable' => 'toolbar_tools_menu_navigation_links'),
+  );
+  $tree = $menu_tree->transform($tree, $manipulators);
+   $admin_menu = $menu_tree->build($tree);
+
+   $admin_menu_html = \Drupal::service('renderer')
+  ->render($admin_menu);
+  $variables['admin_menu'] = $admin_menu_html;
+
+
+   $request = \Drupal::request();
+  $route_match = \Drupal::routeMatch();
+  $page_title = \Drupal::service('title_resolver')->getTitle($request, $route_match->getRouteObject());
+  $variables['current_page_title'] = $page_title;
+
+$user = \Drupal::currentUser();
+
+
+  $account = \Drupal\user\Entity\User::load($user->id()); // pass your uid
+  $variables['current_user_uid'] = $user->id();
+
+
+
+
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for HTML document templates.
+ *
+ * Adds body classes if certain regions have content.
+ */
+function admintheme_preprocess_html(&$variables) {
+
+  // Add information about the number of sidebars.
+  if (!empty($variables['page']['sidebar_first']) && !empty($variables['page']['sidebar_second'])) {
+    $variables['attributes']['class'][] = 'layout-two-sidebars';
+  }
+  elseif (!empty($variables['page']['sidebar_first'])) {
+    $variables['attributes']['class'][] = 'layout-one-sidebar';
+    $variables['attributes']['class'][] = 'layout-sidebar-first';
+  }
+  elseif (!empty($variables['page']['sidebar_second'])) {
+    $variables['attributes']['class'][] = 'layout-one-sidebar';
+    $variables['attributes']['class'][] = 'layout-sidebar-second';
+  }
+  else {
+    $variables['attributes']['class'][] = 'layout-no-sidebars';
+  }
+
+  if (!empty($variables['page']['featured_top'])) {
+    $variables['attributes']['class'][] = 'has-featured-top';
+  }
+  $variables['attributes']['class'][] = 'fix-header fix-sidebar card-no-border';
+
+
+
+}
+
+
+/**
+ * Implements hook_preprocess_HOOK() for maintenance-page.html.twig.
+ */
+function admintheme_preprocess_maintenance_page(&$variables) {
+  // By default, site_name is set to Drupal if no db connection is available
+  // or during site installation. Setting site_name to an empty string makes
+  // the site and update pages look cleaner.
+  // @see template_preprocess_maintenance_page
+  if (!$variables['db_is_active']) {
+    $variables['site_name'] = '';
+  }
+
+  // admintheme has custom styling for the maintenance page.
+  $variables['#attached']['library'][] = 'admintheme/maintenance_page';
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for node.html.twig.
+ */
+function admintheme_preprocess_node(&$variables) {
+  // Remove the "Add new comment" link on teasers or when the comment form is
+  // displayed on the page.
+  if ($variables['teaser'] || !empty($variables['content']['comments']['comment_form'])) {
+    unset($variables['content']['links']['comment']['#links']['comment-add']);
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for block.html.twig.
+ */
+function admintheme_preprocess_block(&$variables) {
+  // Add a clearfix class to system branding blocks.
+  if ($variables['plugin_id'] == 'system_branding_block') {
+    $variables['attributes']['class'][] = 'clearfix';
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for menu.html.twig.
+ */
+function admintheme_preprocess_menu(&$variables) {
+  $variables['attributes']['class'][] = 'clearfix';
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for form templates.
+ */
+function admintheme_theme_suggestions_form_alter(array &$suggestions, array $variables) {
+  if ($variables['element']['#form_id'] == 'search_block_form') {
+    $suggestions[] = 'form__search_block_form';
+  }
+}
+
+/**
+ * Implements hook_form_alter() to add classes to the search form.
+ */
+function admintheme_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if (in_array($form_id, ['search_block_form', 'search_form'])) {
+    $key = ($form_id == 'search_block_form') ? 'actions' : 'basic';
+    if (!isset($form[$key]['submit']['#attributes'])) {
+      $form[$key]['submit']['#attributes'] = new Attribute();
+    }
+    $form[$key]['submit']['#attributes']->addClass('search-form__submit');
+  }
+}
+
+  $moduleHandler = \Drupal::service('module_handler');
+  if (!$moduleHandler->moduleExists('admin_toolbar')){
+
+     function toolbar_tools_menu_navigation_links(array $tree) {
+      foreach ($tree as $element) {
+        $link = $element->link;
+
+        // Get the non-localized title to make the icon class.
+        $definition = $link->getPluginDefinition();
+
+        $element->options['attributes']['class'][] = 'toolbar-icon';
+        $element->options['attributes']['class'][] = 'toolbar-icon-' . strtolower(str_replace(array('.', ' ', '_'), array('-', '-', '-'), $definition['id']));
+        $element->options['attributes']['title'] = $link->getDescription();
+      }
+      return $tree;
+    }
+
+  }
+
+
+
+

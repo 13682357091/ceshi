@@ -1,0 +1,58 @@
+/**
+ * @file
+ * Vertical Tabs.
+ */
+
+.vertical-tabs {
+    display: table;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 15px;
+    width: 100%;
+}
+.vertical-tabs__menu {
+    width: 150px;
+    border-bottom: 0px;
+    border-right: 1px solid rgba(120, 130, 140, 0.13);
+    display: table-cell;
+    vertical-align: top;
+    margin: 0;
+    padding: 0
+}
+
+/* Layout of each tab. */
+.vertical-tabs__menu-item {
+      margin-bottom: -1px;
+      list-style: none;
+}
+.vertical-tabs__menu-item a {
+    color: #263238;
+    margin-bottom: 10px;
+    border: 0px;
+    border-radius: 4px 0 0 4px;
+    display: block;
+    padding: .5rem 1rem
+}
+.vertical-tabs__menu-item.is-selected a
+{
+    display: block;
+    padding: .5rem 1rem;
+    background: #ffffff;
+    border: 0px;
+    border-right: 2px solid #009efb;
+    margin-right: -1px;
+    color: #009efb;
+    border-radius: 4px 0 0 4px;
+    margin-bottom: 10px;
+}
+.vertical-tabscontent
+{
+  display: table-cell;
+  padding: 20px;
+  vertical-align: top;
+}
+.vertical-tabs__menu-item-title,.vertical-tabs__menu-item-summary
+{
+  width: 100%;
+  display: block;
+}
